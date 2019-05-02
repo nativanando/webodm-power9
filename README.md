@@ -7,6 +7,6 @@ Take a look at Dockerfile to know a little more about the dependencies and make 
 
 To run WebODM, follow the steps below:
 
-`git clone https://github.com/nativanando/webodm-power9.git`.
+`git clone https://github.com/nativanando/webodm-power9.git`
 
-`./start.sh`.
+`./start.sh`
