@@ -4,3 +4,7 @@ The repo provides a Docker image for running a WebODM environment on power PC an
 
 
 Take a look at Dockerfile to know a little more about the dependencies and make sure the application is installed.
+
+To run WebODM, follow the steps below:
+
+...
