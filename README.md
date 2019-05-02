@@ -8,3 +8,6 @@ Take a look at Dockerfile to know a little more about the dependencies and make 
 To run WebODM, follow the steps below:
 
 ...
+
+
+Don't use for production yet!
