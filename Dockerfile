@@ -47,6 +47,7 @@ RUN ln -s /usr/local/pgsql/bin/psql /usr/bin/psql
 
 
 # Compile python 2 and 3
+
 RUN apt-get update && apt-get install -y python
 RUN cd /usr/src/ && \
  	wget https://www.python.org/ftp/python/3.5.6/Python-3.5.6.tgz && \
@@ -55,11 +56,9 @@ RUN cd /usr/src/ && \
 	./configure --enable-optimizations && \
   	make -j4 && \
   	make install
-#RUN mv /usr/bin/python /usr/bin/python2
-#RUN ln -s /usr/local/bin/python3 /usr/bin/python
-#RUN ln -s /usr/local/bin/python3 /usr/local/bin/python
 
 # Install postgis dependencies
+
 RUN apt-get update && apt-get install -y \
  	libgeos++-dev \
   	libgeos-3.5.0 \
@@ -76,6 +75,7 @@ RUN apt-get update && apt-get install -y \
   	libgdal-dev 
 
 # Compile gdal lib > 2
+
 RUN cd /opt \
  	&& wget http://download.osgeo.org/gdal/2.1.0/gdal-2.1.0.tar.gz
 
@@ -95,6 +95,7 @@ RUN cd /opt/gdal-2.1.0/ && \
   	python3 setup.py install # Make sure to have python3 as default 
 
 # Download and install  postgis 2.3.9
+
 RUN cd /opt && \
  	wget https://download.osgeo.org/postgis/source/postgis-2.3.9.tar.gz
 
@@ -112,6 +113,7 @@ RUN cd /opt/postgis-2.3.9 && \
 	make install
 
 # NodeJS Compile
+
 RUN cd /opt \
         && wget https://nodejs.org/dist/v10.15.3/node-v10.15.3.tar.gz
 
@@ -150,15 +152,18 @@ RUN cd /opt/redis-stable/ && \
 	make install
 
 # expose web server port
+
 EXPOSE 8000
 
 
 # Install WebODM
+
 RUN apt-get install -y python3-pip
 RUN cd /opt \
 	&& git clone --depth 1 https://github.com/OpenDroneMap/WebODM
 
 # Copy the databse local seetings config
+
 COPY ./local_settings.py /opt/WebODM/webodm/
 
 RUN cd /opt/WebODM/ && \
@@ -170,7 +175,6 @@ RUN cd /opt/WebODM/ && \
 	npm install -g webpack-cli && \
 	npm install && \
 	webpack --mode production && \
-	# (use on entrypoint) python manage.py collectstatic --noinput && \
 	chmod +x start.sh
 
 COPY ./docker-entrypoint.sh /usr/local/bin/
