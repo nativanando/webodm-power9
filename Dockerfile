@@ -1,5 +1,5 @@
 FROM docker.io/ppc64le/ubuntu:16.04
-MAINTAINER Fernando Demarchi Natividade Luiz <nativanando@gmail.com>
+MAINTAINER Régis Belson <me@regisbelson.fr>
 
 # Install the dependecies to compile the applications 
 
@@ -170,5 +170,7 @@ RUN cd /opt/WebODM/ && \
 	npm install -g webpack-cli && \
 	npm install && \
 	webpack --mode production && \
-	python manage.py collectstatic --noinput && \
+	# (use on entrypoint) python manage.py collectstatic --noinput && \
 	chmod +x start.sh
+
+COPY ./docker-entrypoint.sh /usr/local/bin/
