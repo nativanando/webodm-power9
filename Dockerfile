@@ -1,5 +1,5 @@
 FROM docker.io/ppc64le/ubuntu:16.04
-MAINTAINER Régis Belson <me@regisbelson.fr>
+MAINTAINER Fernando Demarchi Natividade Luiz <nativanando@gmail.com>
 
 # Install the dependecies to compile the applications 
 
